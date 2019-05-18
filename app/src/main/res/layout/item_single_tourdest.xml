@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/image_Tw"
+        android:src="@drawable/sample_tw"
+        />
+    <TextView
+        android:id="@+id/nama_Tw"
+        style="@style/Text_Item_List_Bold"
+        />
+    <RatingBar
+        android:id="@+id/rating_Tw"
+        style="@android:style/Widget.Holo.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:rating="3"
+        android:progressTint="#FF9500"
+        android:layout_marginLeft="5dp"
+        />
+</LinearLayout>
+
