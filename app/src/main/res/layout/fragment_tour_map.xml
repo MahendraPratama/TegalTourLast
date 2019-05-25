@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,6 +10,40 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.jentiknyamuk.mpdev.jentiknyamuk.MapsFragment" />
+        tools:context="com.octora.mpdev.tegaltour.TourMapFragment" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/layout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginBottom="10dp"
+        >
+        <Button
+            android:id="@+id/btn_direction"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_blue"
+            android:fontFamily="casual"
+            android:text="DIRECTION"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textColor="@color/putih" />
+        <Button
+            android:id="@+id/btn_view_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_green"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="casual"
+            android:text="VIEW DETAIL"
+            android:textAllCaps="false"
+            android:textColor="@color/putih" />
+    </LinearLayout>
+</RelativeLayout>

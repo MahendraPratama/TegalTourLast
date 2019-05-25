@@ -12,6 +12,19 @@ public class Config {
     public static final String URL_UPDATE_USER  = "http://rasyid.esy.es/UpdateUser.php";
     public static final String URL_SIGNUP       = "http://rasyid.esy.es/SignUp.php";
 
-    public static final String URL_GET_TEMPAT_WISATA = "https://tegaltour.000webhostapp.com/getDaerahTujuanWisata.php";
+    public static final String URL_GET_TEMPAT_WISATA = "https://tegaltour.000webhostapp.com/getTempatWisata.php";
     public static final String URL_GET_FOTO_WISATA = "https://tegaltour.000webhostapp.com/getFotoWisata.php";
+
+    public static final String KEY_ID_TW = "id_tempat_wisata";
+    public static final String KEY_nama_tempat = "nama_tempat";
+    public static final String KEY_kategori = "kategori";
+    public static final String KEY_id_kategori = "id_kategori";
+    public static final String KEY_alamat = "alamat";
+    public static final String KEY_deskripsi = "deskripsi";
+    public static final String KEY_no_telp = "no_telp";
+    public static final String KEY_rating = "rating";
+    public static final String KEY_latitude = "latitude";
+    public static final String KEY_longitude = "longitude";
+    public static final String KEY_LatLng = "LatLng";
+    public static final String KEY_destination = "destination";
 }
