@@ -63,7 +63,7 @@ public class TourMapFragment extends Fragment implements
     LatLng latLng[], destination, currentLoc;
     Boolean markerD[];
     private Double[] latitude, longitude, rating;
-    private Marker myMarker;
+    private Marker myMarker, ClickedMarker;
     private Button btn_go;
     private Marker[] mk;
     LocationManager locationManager;
@@ -74,7 +74,7 @@ public class TourMapFragment extends Fragment implements
     ArrayList<HashMap<String, Object>> listDataMap = new ArrayList<>();
     private LinearLayout layoutButton;
     private Button btnDirection, btnViewDetail;
-
+    private boolean isFirstLoad;
     public TourMapFragment() {
         // Required empty public constructor
     }
@@ -98,7 +98,6 @@ public class TourMapFragment extends Fragment implements
         mapFragment = (MapView) mMainView.findViewById(R.id.map);
         mapFragment.onCreate(savedInstanceState);
         mapFragment.onResume();
-
         try {
             MapsInitializer.initialize(getActivity().getApplicationContext());
             //mapFragment.getMapAsync(TourMapFragment.this);
@@ -125,16 +124,19 @@ public class TourMapFragment extends Fragment implements
 //            return;
 //        }
 
-
-        for(int i = 0 ; i < listDataMap.size() ; i++){
-            Log.d("addmarker", listDataMap.get(i).get(Config.KEY_ID_TW).toString());
-            myMarker = mMap.addMarker(new MarkerOptions()
-                    .position((LatLng) listDataMap.get(i).get(Config.KEY_LatLng))
-                    .title(listDataMap.get(i).get(Config.KEY_nama_tempat).toString())
-                    .snippet(listDataMap.get(i).get(Config.KEY_rating).toString())
-                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker)));
-            myMarker.setTag(listDataMap.get(i).get(Config.KEY_ID_TW).toString());
+        if (isFirstLoad){
+            for(int i = 0 ; i < listDataMap.size() ; i++){
+                Log.d("addmarker", listDataMap.get(i).get(Config.KEY_ID_TW).toString());
+                myMarker = mMap.addMarker(new MarkerOptions()
+                        .position((LatLng) listDataMap.get(i).get(Config.KEY_LatLng))
+                        .title(listDataMap.get(i).get(Config.KEY_nama_tempat).toString())
+                        .snippet(listDataMap.get(i).get(Config.KEY_rating).toString())
+                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker)));
+                myMarker.setTag(listDataMap.get(i).get(Config.KEY_ID_TW).toString());
+            }
+            isFirstLoad=false;
         }
+
         //mMap.setMyLocationEnabled(true);
         //mMap.getUiSettings().setZoomControlsEnabled(true);
         //mMap.getUiSettings().setMapToolbarEnabled(true);
@@ -218,17 +220,10 @@ public class TourMapFragment extends Fragment implements
                                 dt.put(Config.KEY_longitude,longitude[i]);
                                 listDataMap.add(dt);
 
-//                                markerD[i] = false;
-//                                myMarker = mMap.addMarker(new MarkerOptions()
-//                                        .position(latLng[i])
-//                                        .title(nama_tempat[i])
-//                                        .snippet(rating[i].toString())
-//                                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker)));
-//                                myMarker.setTag(id_tempat_wisata[i]);
-
                             } catch (JSONException je) {
                             }
                             mapFragment.getMapAsync(TourMapFragment.this);
+                            isFirstLoad = true;
                             //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng[i], 12));
                         }
                     }
@@ -257,15 +252,14 @@ public class TourMapFragment extends Fragment implements
     public void onClick(View view) {
         if (view == btnDirection)
         {
-            destination = myMarker.getPosition();
-            title = myMarker.getTitle();
+            destination = ClickedMarker.getPosition();
+            title = ClickedMarker.getTitle();
 
-//        currentLoc  = new LatLng(location.getLatitude(),location.getLongitude());
 
             currentLoc = new LatLng(-6.9828315,110.4085595);
 
             Intent i = null;
-            i = new Intent(getActivity(), SimpleDirectionActivity.class);
+            i = new Intent(getActivity(), NewDirectionActivity.class);
 
             Bundle args = new Bundle();
             args.putParcelable(Config.KEY_destination, destination);
@@ -296,22 +290,17 @@ public class TourMapFragment extends Fragment implements
         //Integer clickCount = (Integer) marker.getTag();
         Log.d(marker.getTitle(),"-------------------------------");
         layoutButton.setVisibility(View.VISIBLE);
-        // Check if a click count was set, then display the click count.
-//        if (clickCount != null) {
-//            //clickCount = clickCount + 1;
-//            //marker.setTag(clickCount);
-//            Toast.makeText(getActivity(),
-//                    marker.getTitle() +
-//                            " has been clicked " + clickCount + " times.",
-//                    Toast.LENGTH_SHORT).show();
-//        }
+        ClickedMarker = marker;
         return false;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Log.d("destroy","");
         mapFragment.removeAllViews();
         listDataMap.removeAll(listDataMap);
+        myMarker.remove();
+        mMap.clear();
     }
 }
