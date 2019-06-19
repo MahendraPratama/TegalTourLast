@@ -38,7 +38,7 @@
         <item name="android:text">Sample sample</item>
         <item name="android:padding">5dp</item>
         <item name="android:textSize">15dp</item>
-        <item name="android:textColor">#539f72</item>
+        <item name="android:textColor">#4500ac</item>
     </style>
 
     <style name="Text_Item_List_Bold">

@@ -1,33 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.octora.mpdev.tegaltour.ExploreFragment"
-    android:orientation="vertical">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/grid_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:numColumns="1"
+        android:horizontalSpacing="15dp"
+        android:verticalSpacing="15dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:stretchMode="columnWidth">
 
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        >
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
-            <ListView
-                android:id="@+id/list_tw1"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                >
-
-            </ListView>
-        </LinearLayout>
-
-
-    </HorizontalScrollView>
+    </GridView>
 </LinearLayout>

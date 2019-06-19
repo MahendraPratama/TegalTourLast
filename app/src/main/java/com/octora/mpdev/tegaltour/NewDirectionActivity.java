@@ -116,7 +116,7 @@ public class NewDirectionActivity extends AppCompatActivity implements GoogleApi
         // Output format
         String output = "json";
         // Building the url to the web service
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + getString(R.string.api_direction2);//serverKey ;//getString(R.string.API_KEY)
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + getString(R.string.API_KEY);//serverKey ;//getString(R.string.API_KEY)
         return url;
     }
 

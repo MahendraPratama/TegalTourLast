@@ -31,7 +31,8 @@
             android:value="@string/API_KEY" />
 
         <activity android:name=".SimpleDirectionActivity" />
-        <activity android:name=".NewDirectionActivity"></activity>
+        <activity android:name=".NewDirectionActivity" />
+        <activity android:name=".TourismDetailActivity"></activity>
     </application>
 
 </manifest>
